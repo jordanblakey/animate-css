@@ -1,1 +1,2 @@
 animate-css
+animate-css
