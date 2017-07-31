@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animate.css Sandbox</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <style>
+    header.slideInDown {
+      animation-duration: 500ms;
+    }
+
+    #section-1 {
+      /*animation-delay: 400ms;*/
+      animation-delay: 500ms;
+      animation-duration: 500ms;
+      /*animation-duration: 1000ms;*/
+      /*animation-iteration-count: 3;*/
+      animation-iteration-count: 1;
+    }
+
+    #section-2 {
+      animation-delay: 1000ms;
+      animation-duration: 500ms;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script type="text/javascript">
+    $(function() {
+      // Click Handler
+      $('#animate-btn1').click(function() {
+        animate('#anim-head', 'bounce');
+        animate('#anim-body', 'rubberBand')
+        return false;
+      });
+
+      $('#animate-btn2').click(function() {
+        animate('header', 'slideOutUp');
+        setTimeout(function() {
+          $('header').css('visibility', 'hidden');
+        }, 1000)
+        return false;
+      });
+
+      // Animate
+      function animate(element, animation) {
+        $(element).addClass('animated ' + animation);
+        let wait = setTimeout(function() {
+          $(element).removeClass('animated ' + animation);
+        }, 1000);
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="text-center bg-primary text-white p-5 animated slideInDown">
+      <h1 class="display-4">Animate.css Sandbox</h1>
+    </header>
+    <section id="section-1" class="bg-faded p-5 my-3 animated slideInLeft">
+      <h1>Section One</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae expedita explicabo ad, deleniti consequatur iste repellendus magni eveniet? Earum provident quasi aut corrupti, distinctio. Facilis, velit, cupiditate! Atque itaque iure temporibus suscipit
+        aliquam omnis corrupti error amet ab, laudantium neque?</p>
+    </section>
+    <section id="section-2" class="bg-faded p-5 my-3 animated slideInRight">
+      <h1 id="anim-head">Section One</h1>
+      <p id="anim-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae expedita explicabo ad, deleniti consequatur iste repellendus magni eveniet? Earum provident quasi aut corrupti, distinctio. Facilis, velit, cupiditate! Atque itaque iure temporibus suscipit
+        aliquam omnis corrupti error amet ab, laudantium neque?</p>
+      <button class="btn btn-primary" id="animate-btn1">Animate</button>
+      <button class="btn btn-primary" id="animate-btn2">Animate</button>
+    </section>
+  </div>
+</body>
+
+</html>
